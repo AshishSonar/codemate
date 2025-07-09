@@ -7,7 +7,7 @@ const userAuth = async (req, res, next) => {
       const cookies = req.cookies;
              const {token} = cookies
             if(!token){
-                throw new Error('Invalid Token')
+                return res.status(401).send("Please Login!")
             }
     
              const decodedMessage =await jwt.verify(token, 'Hi@297842TOKEN')
@@ -17,7 +17,7 @@ const userAuth = async (req, res, next) => {
              const userData = await User.findById(_id)
 
         if(!userData){
-            throw new Error("user does not exist")
+            return res.status(401).send("User does not exist. Please Signup!")
         }
 
         req.userData = userData
