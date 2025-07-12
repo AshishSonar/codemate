@@ -38,7 +38,7 @@ userRouter.get("/user/connections", userAuth, async (req, res) => {
       return row.fromUserId;
     });
 
-    res.json({ message: "Data Fetched", Data: connectedUser });
+    res.json({ message: "Data Fetched", data: connectedUser });
   } catch (err) {
     res.status(400).json({ message: "Error: " + err.message });
   }
