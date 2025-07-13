@@ -12,11 +12,29 @@ const userRouter = require('./routes/user')
 
 
 
+// app.use(cors({
+//   origin: "http://localhost:5173",
+//   //origin: "https://codemate-web-c3fd.onrender.com",
+//   credentials: true, 
+// })) 
+
+
+const allowedOrigins = [
+  "http://localhost:5173",
+  "https://codemate-web-c3fd.onrender.com", // when deployed
+];
+
 app.use(cors({
-  origin: "http://localhost:5173",
-  //origin: "https://codemate-web-c3fd.onrender.com",
-  credentials: true, 
-})) 
+  origin: function (origin, callback) {
+    if (!origin) return callback(null, true); // Allow Postman/cURL
+    if (allowedOrigins.includes(origin)) {
+      return callback(null, true);
+    } else {
+      return callback(new Error("Not allowed by CORS"));
+    }
+  },
+  credentials: true
+}));
 
 
 
