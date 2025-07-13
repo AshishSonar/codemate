@@ -13,8 +13,8 @@ const userRouter = require('./routes/user')
 
 
 app.use(cors({
-  //origin: "http://localhost:5173",
-  origin: "https://codemate-web-c3fd.onrender.com",
+  origin: "http://localhost:5173",
+  //origin: "https://codemate-web-c3fd.onrender.com",
   credentials: true, 
 })) 
 

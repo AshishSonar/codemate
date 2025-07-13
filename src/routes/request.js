@@ -71,8 +71,6 @@ requestRouter.post(
         _id: requestId,
       });
 
-      //console.log(connectionRequest);
-
       if (!connectionRequest) {
         return res
           .status(400)
@@ -80,10 +78,8 @@ requestRouter.post(
       }
 
       connectionRequest.status = status;
-      console.log(connectionRequest.status)
 
       const data = await connectionRequest.save();
-      console.log(connectionRequest.status)
       
       res.send({ message: "Connection request " + status, data });
     } catch (err) {
